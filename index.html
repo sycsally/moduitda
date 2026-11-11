@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>장서영 | 소개</title>
+  <meta name="description" content="장서영을 소개하는 페이지입니다." />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <style>
+    :root {
+      --bg: #faf9f7;
+      --surface: #ffffff;
+      --text: #1f1e1c;
+      --muted: #6b6862;
+      --line: #e7e4df;
+      --accent: #c2410c;
+      --accent-soft: #fdeee6;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #161514;
+        --surface: #1f1e1c;
+        --text: #f1efeb;
+        --muted: #a29e97;
+        --line: #33312e;
+        --accent: #fb923c;
+        --accent-soft: #2e2119;
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      word-break: keep-all;
+    }
+    a { color: inherit; }
+
+    /* 상단 내비게이션 */
+    nav {
+      position: sticky; top: 0; z-index: 10;
+      background: color-mix(in srgb, var(--bg) 85%, transparent);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner {
+      max-width: 880px; margin: 0 auto; padding: 14px 20px;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+    }
+    .logo { font-weight: 700; text-decoration: none; }
+    .nav-links { display: flex; gap: 20px; list-style: none; font-size: 15px; }
+    .nav-links a { text-decoration: none; color: var(--muted); }
+    .nav-links a:hover { color: var(--accent); }
+
+    main { max-width: 880px; margin: 0 auto; padding: 0 20px; }
+    section { padding: 72px 0; border-bottom: 1px solid var(--line); }
+    section:last-of-type { border-bottom: none; }
+    h2 {
+      font-size: 14px; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 20px; font-weight: 700;
+    }
+
+    /* 히어로 */
+    .hero { display: flex; align-items: center; gap: 40px; padding: 96px 0 80px; }
+    .avatar {
+      flex-shrink: 0; width: 140px; height: 140px; border-radius: 50%;
+      background: var(--accent-soft); color: var(--accent);
+      display: grid; place-items: center; font-size: 44px; font-weight: 700;
+      border: 1px solid var(--line);
+    }
+    .hero h1 { font-size: clamp(36px, 6vw, 52px); line-height: 1.2; letter-spacing: -0.02em; }
+    .hero .role { font-size: 19px; color: var(--muted); margin-top: 8px; }
+    .hero .tagline { margin-top: 16px; font-size: 17px; max-width: 520px; }
+    .btns { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
+    .btn {
+      display: inline-block; padding: 10px 20px; border-radius: 999px;
+      font-size: 15px; font-weight: 600; text-decoration: none;
+      border: 1px solid var(--accent);
+    }
+    .btn.primary { background: var(--accent); color: #fff; }
+    .btn.ghost { color: var(--accent); }
+    .btn:hover { opacity: .85; }
+
+    /* 소개 */
+    .about p { font-size: 17px; margin-bottom: 14px; max-width: 680px; }
+
+    /* 관심사 */
+    .tags { display: flex; flex-wrap: wrap; gap: 10px; }
+    .tag {
+      padding: 8px 16px; border-radius: 999px; font-size: 15px;
+      background: var(--surface); border: 1px solid var(--line);
+    }
+
+    /* 경력 타임라인 */
+    .timeline { list-style: none; border-left: 2px solid var(--line); padding-left: 24px; }
+    .timeline li { position: relative; margin-bottom: 32px; }
+    .timeline li:last-child { margin-bottom: 0; }
+    .timeline li::before {
+      content: ""; position: absolute; left: -31px; top: 8px;
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--accent); border: 3px solid var(--bg);
+    }
+    .period { font-size: 14px; color: var(--muted); }
+    .timeline h3 { font-size: 18px; margin: 2px 0 4px; }
+    .timeline p { color: var(--muted); }
+
+    /* 연락처 */
+    .contact-list { list-style: none; display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+    .contact-list a {
+      display: block; padding: 18px 20px; border-radius: 14px; text-decoration: none;
+      background: var(--surface); border: 1px solid var(--line);
+      transition: border-color .2s, transform .2s;
+    }
+    .contact-list a:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .contact-list span { display: block; font-size: 13px; color: var(--muted); }
+    .contact-list strong { font-weight: 600; }
+
+    /* 메시지 폼 */
+    .msg-form {
+      margin-top: 32px; padding: 24px; border-radius: 14px;
+      background: var(--surface); border: 1px solid var(--line);
+      display: grid; gap: 14px;
+    }
+    .msg-form h3 { font-size: 18px; }
+    .msg-form .row { display: grid; gap: 14px; grid-template-columns: 1fr 1fr; }
+    .msg-form label { display: grid; gap: 6px; font-size: 14px; color: var(--muted); }
+    .msg-form input, .msg-form textarea {
+      font: inherit; font-size: 16px; color: var(--text);
+      background: var(--bg); border: 1px solid var(--line); border-radius: 10px;
+      padding: 10px 12px; width: 100%;
+    }
+    .msg-form textarea { min-height: 120px; resize: vertical; }
+    .msg-form input:focus, .msg-form textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: transparent; }
+    .msg-form .hp { position: absolute; left: -9999px; }
+    .msg-form button { justify-self: start; cursor: pointer; font-family: inherit; }
+    .msg-form button:disabled { opacity: .5; cursor: default; }
+    .form-status { font-size: 15px; min-height: 1.5em; }
+    .form-status.ok { color: #15803d; }
+    .form-status.err { color: #b91c1c; }
+    @media (prefers-color-scheme: dark) {
+      .form-status.ok { color: #4ade80; }
+      .form-status.err { color: #f87171; }
+    }
+
+    footer { text-align: center; padding: 40px 20px; font-size: 14px; color: var(--muted); }
+
+    /* 스크롤 등장 효과 */
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s, transform .6s; }
+    .reveal.visible { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      html { scroll-behavior: auto; }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links { gap: 14px; font-size: 14px; }
+      .hero { flex-direction: column; align-items: flex-start; gap: 24px; padding: 56px 0; }
+      .avatar { width: 96px; height: 96px; font-size: 32px; }
+      .msg-form .row { grid-template-columns: 1fr; }
+      section { padding: 56px 0; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="#top" class="logo">장서영</a>
+      <ul class="nav-links">
+        <li><a href="#about">소개</a></li>
+        <li><a href="#career">경력</a></li>
+        <li><a href="#contact">연락처</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="top">
+    <!-- 히어로: 이름, 직함, 한 줄 소개 -->
+    <section class="hero">
+      <!-- 사진을 쓰려면 아래 div를 <img class="avatar" src="photo.jpg" alt="장서영 사진"> 로 바꾸세요 -->
+      <div class="avatar" aria-hidden="true">서영</div>
+      <div>
+        <h1>안녕하세요,<br />장서영입니다.</h1>
+        <p class="role">[직함 / 하는 일 — 예: 프로덕트 디자이너]</p>
+        <p class="tagline">[나를 한 문장으로 표현하는 소개를 적어주세요.]</p>
+        <div class="btns">
+          <a class="btn primary" href="#contact">연락하기</a>
+          <a class="btn ghost" href="#about">더 알아보기</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 소개 -->
+    <section id="about" class="about reveal">
+      <h2>About</h2>
+      <p>[어떤 사람인지, 무엇을 좋아하고 어떤 일을 하는지 2~3문장으로 적어주세요.]</p>
+      <p>[요즘 집중하는 것이나 앞으로의 목표를 적어주세요.]</p>
+    </section>
+
+    <!-- 관심사 / 스킬 -->
+    <section class="reveal">
+      <h2>관심사 & 강점</h2>
+      <div class="tags">
+        <span class="tag">[키워드 1]</span>
+        <span class="tag">[키워드 2]</span>
+        <span class="tag">[키워드 3]</span>
+        <span class="tag">[키워드 4]</span>
+        <span class="tag">[키워드 5]</span>
+      </div>
+    </section>
+
+    <!-- 경력 / 활동 -->
+    <section id="career" class="reveal">
+      <h2>경력 & 활동</h2>
+      <ul class="timeline">
+        <li>
+          <div class="period">[2024 — 현재]</div>
+          <h3>[소속 / 역할]</h3>
+          <p>[무엇을 했는지 한두 줄]</p>
+        </li>
+        <li>
+          <div class="period">[2021 — 2024]</div>
+          <h3>[소속 / 역할]</h3>
+          <p>[무엇을 했는지 한두 줄]</p>
+        </li>
+        <li>
+          <div class="period">[2017 — 2021]</div>
+          <h3>[학교 / 전공]</h3>
+          <p>[간단한 설명]</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 연락처 -->
+    <section id="contact" class="reveal">
+      <h2>Contact</h2>
+      <ul class="contact-list">
+        <li><a href="mailto:you@example.com"><span>이메일</span><strong>you@example.com</strong></a></li>
+        <li><a href="https://instagram.com/" target="_blank" rel="noopener"><span>Instagram</span><strong>@[아이디]</strong></a></li>
+        <li><a href="https://www.linkedin.com/" target="_blank" rel="noopener"><span>LinkedIn</span><strong>[프로필 이름]</strong></a></li>
+      </ul>
+
+      <!-- 메시지 남기기: Supabase public.messages 테이블에 저장 -->
+      <form class="msg-form" id="msg-form" novalidate>
+        <h3>메시지 남기기</h3>
+        <div class="row">
+          <label>이름 *
+            <input name="name" type="text" maxlength="50" required autocomplete="name" />
+          </label>
+          <label>이메일 (선택, 답장을 원하면)
+            <input name="email" type="email" maxlength="200" autocomplete="email" />
+          </label>
+        </div>
+        <label>메시지 *
+          <textarea name="message" maxlength="2000" required></textarea>
+        </label>
+        <!-- 스팸봇용 숨김 필드: 사람은 보지 못하므로 비어 있어야 함 -->
+        <input class="hp" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <button class="btn primary" type="submit">보내기</button>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer>© <span id="year"></span> 장서영. All rights reserved.</footer>
+
+  <!-- Supabase 접속 정보 (config.js는 Git에 올라가지 않음, config.example.js 참고) -->
+  <script src="config.js"></script>
+  <script>
+    // 저작권 연도 자동 표시
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // 섹션이 화면에 들어오면 부드럽게 나타나기
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add("visible"); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+
+    // ── Supabase 연결: 메시지 폼 ──────────────────────────────
+    const cfg = window.APP_CONFIG || {};
+    // "/rest/v1/"까지 붙여 넣어도 동작하도록 기본 주소만 남김
+    const baseUrl = (cfg.PROJECT_URL || "").replace(/\/+$/, "").replace(/\/rest\/v1$/, "");
+    const form = document.getElementById("msg-form");
+    const statusEl = document.getElementById("form-status");
+
+    function setStatus(text, type) {
+      statusEl.textContent = text;
+      statusEl.className = "form-status" + (type ? " " + type : "");
+    }
+
+    async function sendMessage({ name, email, message }) {
+      const res = await fetch(baseUrl + "/rest/v1/messages", {
+        method: "POST",
+        headers: {
+          apikey: cfg.API_KEY,
+          "Content-Type": "application/json",
+          Prefer: "return=minimal",
+        },
+        body: JSON.stringify({ name, email: email || null, message }),
+      });
+      if (!res.ok) {
+        const detail = await res.text().catch(() => "");
+        throw new Error(res.status + " " + detail);
+      }
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(form));
+      if (data.website) return; // 스팸봇
+      const name = data.name.trim(), email = data.email.trim(), message = data.message.trim();
+
+      if (!name || !message) return setStatus("이름과 메시지를 입력해 주세요.", "err");
+      if (email && !form.email.checkValidity()) return setStatus("이메일 형식을 확인해 주세요.", "err");
+      if (!baseUrl || !cfg.API_KEY) return setStatus("사이트 설정(config.js)이 비어 있어 보낼 수 없습니다.", "err");
+
+      const btn = form.querySelector("button");
+      btn.disabled = true;
+      setStatus("보내는 중…");
+      try {
+        await sendMessage({ name, email, message });
+        form.reset();
+        setStatus("메시지를 보냈어요. 고맙습니다!", "ok");
+      } catch (err) {
+        console.error("메시지 전송 실패:", err);
+        setStatus("전송에 실패했어요. 잠시 후 다시 시도해 주세요.", "err");
+      } finally {
+        btn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
