@@ -6,6 +6,6 @@
 //    공개용 키(예: Supabase anon/publishable key)만 넣고,
 //    service_role 같은 비밀 키는 절대 넣지 마세요.
 window.APP_CONFIG = {
-  PROJECT_URL: "", // 예: https://xxxxxxxx.supabase.co
-  API_KEY: "",     // 공개용 API 키
+  PROJECT_URL: "", // 예: https://xxxxxxxx.supabase.co (/rest/v1 없이)
+  API_KEY: "",     // 공개용 키 (sb_publishable_...)
 };
