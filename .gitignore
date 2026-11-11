@@ -1,0 +1,5 @@
+# 실제 키가 들어있는 설정 파일
+config.js
+.env
+.env.*
+!.env.example
